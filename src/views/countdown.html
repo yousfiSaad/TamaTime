@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="countdown.css" />
+    <link rel="stylesheet" href="directive/progressDirective.css" />
+    <script src="../../bower_components/angular/angular.js"></script>
+  </head>
+  <body ng-app="app">
+    <div class="container" ng-controller="mainCtrl">
+      <img src="./1475076090_eye-close.png" alt="close" class="pointer topright" ng-click='hideWindow()'/>
+      <!--button ng-click="start()" ng-show="done" class="btn" >Start</button>
+      <button ng-click="stop()" ng-hide="done" class="btn" >Stop</button>
+      <div ng-hide="done" class="countdown" id="count"></div-->
+      <progress-directive progress="{{done?0:ceil((25-countDown)*100/25)}}">
+        <span ng-click="startStop()" ng-mouseover="showStop = true" ng-mouseleave="showStop = false">
+          <span class="pointer">{{ done?"Start": ( showStop?'Stop':( (countDown * 1000) | date: 'mm:ss': 'UTC') ) }}</span>
+        </span>
+      </progress-directive>
+    </div>
+    <script>require('./app')</script>
+    <script>require('./directive/progressDirective')</script>
+  </body>
+</html>
